@@ -2,7 +2,6 @@
 ```mermaid
 %%{init: {'theme': 'default'}}%%
 
-
 sequenceDiagram
     autonumber
     actor Applicant as チケット申込者<br/>(会員アカウント)
@@ -13,15 +12,15 @@ sequenceDiagram
     Note over Applicant, SalesSys: 【前提】チケット申込者は会員アカウントでログイン済（会員ID確定）
 
     Applicant->>SalesSys: 1. 対象公演の認証セッション発行を要求（会員ID, Session_ID）
-    SalesSys->>SalesSys: 2. リクエストID（Req_ID）を生成し、会員ID・Session_ID と仮紐付け
+    SalesSys->>SalesSys: 2. ワンタイムのリクエストID（Req_ID）を生成し、会員ID・Session_ID と仮紐付け
     SalesSys-->>Applicant: 3. 認証用セッション情報（Req_ID + Session_ID / QR等）を返却
 
     Note over Applicant, Executor: ※同一人物の場合は同一端末でそのまま実行<br/>※他者が認証する場合はセッション情報（QR等）を共有して実行
 
-    Executor->>Executor: 4. マイナンバーカード読取 & 署名用PW入力<br/>・ローカル環境でJPKI署名からZKP（ゼロ知識証明）を生成<br/>・Nullifier = Hash(JPKI署名 || Session_ID) を算出<br/>（※個人属性および公開鍵そのものは外部へ送信しない）
+    Executor->>Executor: 4. マイナンバーカード読取 & 署名用PW入力<br/>・ローカル環境でワンタイムチャレンジ Hash(Req_ID || Session_ID) に対しJPKI署名を生成<br/>・Nullifier = Hash(PK_JPKI || Session_ID) を算出（※PK_JPKIはJPKI署名用公開鍵）<br/>・純粋ZKP回路によりゼロ知識証明（ZKP）を生成<br/>（※個人属性および公開鍵 PK_JPKI そのものは外部へ送信しない）
 
-    Executor->>ZkpAuth: 5. ZKP + Nullifier + Session_ID を送信
-    ZkpAuth->>ZkpAuth: 6. ZKPの数学的検証<br/>（有効な公的個人認証の署名保持とセッション一致のみ検証）<br/>※重複・ロック状態等の履歴は保持・参照しない
+    Executor->>ZkpAuth: 5. ZKP + Nullifier + Req_ID + Session_ID を送信
+    ZkpAuth->>ZkpAuth: 6. ZKPの数学的検証（純粋ZKP回路）<br/>・J-LISルート証明書および未失効リスト（Merkle Root）に基づく証明書の有効性検証<br/>・Hash(Req_ID || Session_ID) に対するJPKI署名の正当性検証（リプレイ防止）<br/>・Nullifier が当該証明書の PK_JPKI から正しく導出されたことの一致検証<br/>※重複・ロック状態等の履歴は保持・参照しない
     ZkpAuth-->>Executor: 7. 「あんしんトークン（Nullifier + 連番 + ZKP認証基盤署名）」を発行
 
     Executor->>SalesSys: 8. Req_ID と あんしんトークン を送信（コールバック）

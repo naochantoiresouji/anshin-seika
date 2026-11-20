@@ -2,7 +2,6 @@
 ```mermaid
 %%{init: {'theme': 'default'}}%%
 
-
 sequenceDiagram
     autonumber
     actor Applicant as チケット申込者<br/>(会員アカウント / 端末)
@@ -16,6 +15,7 @@ sequenceDiagram
 
     alt トークン未提示 / 無効 / 期限切れ
         SalesSys-->>Applicant: 3a. 非認証ルート（一般標準価格 25,000円〜）での応募選択を提示
+        Note over Applicant, SalesSys: ※【設計方針】非認証ルートは匿名アカウントでの利用を前提とするため、<br/>アカウント単位の同時応募枠上限や14日間ロックは適用しない（量産回避が容易なため）。<br/>認証枠とは隔離された別在庫プール＋2.5倍以上の価格プレミアムで経済的抑止と正規枠保護を両立する。
     else 有効な未消費（UNUSED）トークン（認証枠：公式特別価格 10,000円）
         SalesSys->>SalesSys: 3b. 【第1関門】該当「会員ID」が14日間動的ロック中でないか確認
 
@@ -32,4 +32,5 @@ sequenceDiagram
             end
         end
     end
+
 ```
