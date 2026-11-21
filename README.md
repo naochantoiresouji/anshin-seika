@@ -83,16 +83,19 @@ anshin-seika/
 
 ## 4. 関連ドキュメント・公開情報
 
-* **全体構想・ビジネス／法制度モデル（note）**
-  * [あんしん正価モデル ホワイトペーパー ＆ コアロジック定義書（v1.1.1）](https://note.com/naochan_toiresj/n/n33b88b0b5b00)
-    * 設計思想（Financial WAF）、ファンクラブ経済圏でのポイント還流、景品表示法（二重価格表示）との調和、3段階の導入ロードマップを解説しています。
-* **技術アーキテクチャ詳細（本リポジトリ内）**
-  * [リファレンスアーキテクチャ仕様書 (`anshin-seika-reference/readme.md`)](anshin-seika-reference/readme.md)
-  * [トークン全ステータス遷移仕様 (`anshin-seika-reference/specs/token_state_transition.md`)](anshin-seika-reference/specs/token_state_transition.md)
-* **経済検証シミュレーション（本リポジトリ内）**
-  * [シミュレーター概要 (`anshin_seika_sim/README.md`)](anshin_seika_sim/README.md) / [数理仕様 (`anshin_seika_sim/SPEC.md`)](anshin_seika_sim/SPEC.md)
-* **その他発信（X）**
-  * X（旧Twitter）でも、本モデルに関する考察や時事ニュースへの見解を発信しています（アカウント名：`なおちゃんトイレそうじ @naochan_t_souji`）。
+- **全体構想・ビジネス／法制度モデル（note）**
+  - [あんしん正価モデル ホワイトペーパー ＆ コアロジック定義書（v1.1.1）](https://note.com/naochan_toiresj/n/n33b88b0b5b00)
+    - 設計思想（Financial WAF）、ファンクラブ経済圏でのポイント還流、景品表示法（二重価格表示）との調和、3段階の導入ロードマップを解説しています。
+- **技術解説・図解記事（Zenn）**
+  - [JPKI×ZKPとFinancial WAFによるチケット転売の経済的抑止設計「あんしん正価モデル」](https://zenn.dev/naochan_t_souji/articles/76bc6555ab2cd3)
+    - アーキテクチャ全体像、4枚の図解フロー、状態遷移の不変条件およびシミュレーション検証結果を解説しています。
+- **技術アーキテクチャ詳細（本リポジトリ内）**
+  - [リファレンスアーキテクチャ仕様書 (`anshin-seika-reference/readme.md`)](anshin-seika-reference/readme.md)
+  - [トークン全ステータス遷移仕様 (`anshin-seika-reference/specs/token_state_transition.md`)](anshin-seika-reference/specs/token_state_transition.md)
+- **経済検証シミュレーション（本リポジトリ内）**
+  - [シミュレーター概要 (`anshin_seika_sim/README.md`)](anshin_seika_sim/README.md) / [数理仕様 (`anshin_seika_sim/SPEC.md`)](anshin_seika_sim/SPEC.md)
+- **その他発信（X）**
+  - X（旧Twitter）でも、本モデルに関する考察や時事ニュースへの見解を発信しています。
 
 ---
 
