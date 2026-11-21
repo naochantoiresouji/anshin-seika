@@ -95,7 +95,7 @@ anshin-seika/
 - **経済検証シミュレーション（本リポジトリ内）**
   - [シミュレーター概要 (`anshin_seika_sim/README.md`)](anshin_seika_sim/README.md) / [数理仕様 (`anshin_seika_sim/SPEC.md`)](anshin_seika_sim/SPEC.md)
 - **その他発信（X）**
-  - X（旧Twitter）でも、本モデルに関する考察や時事ニュースへの見解を発信しています。
+  * X（旧Twitter）でも、本モデルに関する考察や時事ニュースへの見解を発信しています（アカウント名：`なおちゃんトイレそうじ @naochan_t_souji`）。
 
 ---
 
